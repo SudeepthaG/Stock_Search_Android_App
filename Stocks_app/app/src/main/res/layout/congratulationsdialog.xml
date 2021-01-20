@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="390dp"
+    android:layout_height="270dp"
+    android:background="@color/trendingColor"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/sharespart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="45dp">
+
+
+        <TextView
+            android:id="@+id/congratsheading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="55dp"
+            android:text="Congratulations"
+            android:textColor="@android:color/white"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:paddingTop="30dp"
+            />
+
+        <TextView
+            android:id="@+id/congratstext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You have successfully bought 10 shares of MSFT"
+            android:layout_below="@id/congratsheading"
+            android:gravity="center"
+            android:paddingRight="50dp"
+            android:paddingLeft="55dp"
+            android:textColor="@color/white"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/donebutton"
+            android:gravity="center"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:clickable="true"
+            android:text="Done"
+            android:textColor="@color/trendingColor"
+            android:background="@drawable/donebtn"
+            />
+    </LinearLayout>
+
+</LinearLayout>

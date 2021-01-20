@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="390dp"
+    android:layout_height="310dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tradeheading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Trade Corp Shares"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:paddingTop="30dp"
+        android:paddingBottom="15dp"/>
+    <RelativeLayout
+        android:id="@+id/sharespart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/inputtext"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="@color/purple_200"
+            android:gravity="start"
+            android:hint="0"
+            android:inputType="number"
+            android:textAlignment="gravity"
+            android:textColor="@color/moneyleftcolor"
+            android:textCursorDrawable="@drawable/cursor"
+            android:textSize="23dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/sharestext"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:paddingTop="19dp"
+            android:text="shares"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/sharescalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sharestext"
+            android:gravity="right"
+            android:paddingTop="5dp"
+            android:paddingRight="25dp"
+            android:text="0 x 12334/share = $0.0"
+            android:textColor="#000000" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/moneyleft"
+        android:text="$1234 left to buy ist"
+        android:textAlignment="center"
+        android:textColor="@color/moneyleftcolor"
+        android:textStyle="bold"
+        android:paddingTop="22dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="15dp">
+
+
+
+
+        <Button
+            android:id="@+id/buybtn"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:clickable="true"
+            android:text="Buy"
+            android:textColor="@color/white"
+
+            android:background="@drawable/roundedcorners"
+            />
+
+        <Button
+            android:id="@+id/sellbtn"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/roundedcorners"
+            android:clickable="true"
+            android:text="Sell"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</LinearLayout>

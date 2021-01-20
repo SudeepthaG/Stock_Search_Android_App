@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".StockDetailActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/home_toolbar_layout" />
+
+    <include
+        android:id="@+id/progressScreen"
+        layout="@layout/loading_screen"
+        android:layout_width="0dp"
+        android:layout_height="604dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/relativechild">
+
+                <TextView
+                    android:id="@+id/StkName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.051"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/stkValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.954"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:textStyle="bold"
+                    android:paddingLeft="3dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/moneyleftcolor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.045"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/StkName"
+                    app:layout_constraintVertical_bias="0.042" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.954"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/stkValue"
+                    app:layout_constraintVertical_bias="0.181" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+<!--            <WebView-->
+<!--                android:id="@+id/webView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginTop="5dp" />-->
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="365dp"
+                android:layout_below="@+id/textV" />
+
+
+            <RelativeLayout
+                android:id="@+id/portfoliopart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/webView">
+
+                <TextView
+                    android:id="@+id/portfolioheading"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Portfolio"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:paddingLeft="15dp"
+                    android:gravity="left|center"/>
+
+                <TextView
+                    android:id="@+id/sharesxml"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/portfolioheading"
+                    android:text="Shares Owned: "
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/marketvalxml"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/sharesxml"
+                    android:text="Market Value: "
+                    android:textAlignment="center"
+                    android:textColor="#000000" />
+
+                <Button
+                    android:id="@+id/tradebutton"
+                    android:layout_width="110dp"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/portfolioheading"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="50dp"
+                    android:background="@drawable/tradebtn"
+                    android:text="TRADE"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+
+
+            <!--            <TextView-->
+<!--                android:id="@+id/textView2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="   Portfolio"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textSize="18sp"-->
+<!--                android:textStyle="bold" />-->
+
+
+<!--            <androidx.constraintlayout.constraintlayoutwidget.ConstraintLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="73dp"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/textView3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="TextView"-->
+<!--                    android:textAlignment="center"-->
+<!--                    android:textColor="#000000"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.18"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintVertical_bias="0.533" />-->
+
+<!--                <Button-->
+<!--                    android:id="@+id/button"-->
+<!--                    android:layout_width="135dp"-->
+<!--                    android:layout_height="33dp"-->
+<!--                    android:background="@drawable/round_btn_grey"-->
+<!--                    android:text="TRADE"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintHorizontal_bias="0.947"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintVertical_bias="0.484" />-->
+<!--            </androidx.constraintlayout.constraintlayoutwidget.ConstraintLayout>-->
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   Stats"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <GridView
+                android:id="@+id/gridView1"
+                android:layout_width="match_parent"
+                android:layout_height="105dp"
+                android:stretchMode="columnWidth"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:verticalSpacing="17dp"
+                android:numColumns="3">
+
+            </GridView>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   About"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.skyhope.showmoretextview.ShowMoreTextView
+                android:visibility="gone"
+
+                android:id="@+id/text_view_show_more"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="5dp"
+                android:textAlignment="textStart"
+                android:textColor="#000000" />
+
+            <TextView
+                android:visibility="visible"
+                android:paddingLeft="10dp"
+                android:id="@+id/moredata"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:fadeScrollbars="false"
+                android:layout_marginRight="5dp"
+                android:textSize="15dp"
+                android:text="Glide is also a powerful image downloading and caching library for Android. It is similar to Picasso. You can also use Glide to load photos in Google tab.Glide is also a powerful image downloading and caching library for Android. It is similar to Picasso. You can also use Glide to load photos in Google tab."
+                />
+
+            <Button
+                android:visibility="visible"
+                android:id="@+id/showmorebtn"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:textAllCaps="false"
+                android:text="Show more"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/round_btn_white"
+                style="?android:attr/borderlessButtonStyle"
+                android:minHeight="1dp"
+                />
+
+            <TextView
+                android:visibility="gone"
+                android:paddingLeft="10dp"
+                android:id="@+id/lessdata"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:fadeScrollbars="false"
+                android:layout_marginRight="5dp"
+                android:textSize="15dp"
+                android:text="Glide is also a powerful image downloading and caching library for Android. It is similar to Picasso. You can also use Glide to load photos in Google tab.Glide is also a powerful image downloading and caching library for Android. It is similar to Picasso. You can also use Glide to load photos in Google tab."
+                />
+
+            <Button
+                android:visibility="gone"
+                android:id="@+id/showlessbtn"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="right"
+                android:textAllCaps="false"
+                android:text="Show less"
+                android:textColor="@color/colorAccent"
+                android:background="@drawable/round_btn_white"
+                style="?android:attr/borderlessButtonStyle"
+                android:minHeight="1dp"
+                />
+
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="   News"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:padding="4dp"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,164 @@
+<html>
+<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'>
+</head>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/stock/modules/data.js"></script>
+<script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/stock/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/indicators.js"></script>
+<script src="https://code.highcharts.com/stock/indicators/volume-by-price.js"></script>
+<body>
+<div id = "container" style="height: 360px; width: 100%;">
+
+</div>
+</body>
+<script>
+
+    function getParameters(query) {
+       var parts = query.split('&');
+       var params = {};
+       for (var i = 0, ii = parts.length; i < ii; ++i) {
+           var param = parts[i].split('=');
+           var key = param[0];
+           var value = param.length > 1 ? param[1] : null;
+           params[decodeURIComponent(key)] = decodeURIComponent(value);
+       }
+       return params;
+   }
+
+   function populate_charts(res,ticker){
+    var ohlc = [];
+      var volume = [];
+      var datalength = res.length;
+      for (var i = 0; i < datalength; i += 1) {
+          var date = new Date(res[i]['date']);
+          var date_UTC = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+          ohlc.push([
+              date_UTC, res[i]['open'],res[i]['high'],
+              res[i]['low'],res[i]['close']
+          ]);
+          volume.push([
+            date_UTC,res[i]['volume']
+          ]);
+      }
+    document.getElementById("container").innerHTML = ohlc[0];
+    Highcharts.stockChart('container', {
+
+    rangeSelector: {
+        allButtonsEnabled: true,
+        selected: 2
+    },
+    yAxis: [{
+        startOnTick: false,
+        endOnTick: false,
+        labels: {
+            align: 'right',
+            x: -3
+        },
+        title: {
+            text: 'OHLC'
+        },
+        height: '60%',
+        lineWidth: 2,
+        resize: {
+            enabled: true
+        }
+    }, {
+        labels: {
+            align: 'right',
+            x: -3
+        },
+        title: {
+            text: 'Volume'
+        },
+        top: '65%',
+        height: '35%',
+        offset: 0,
+        lineWidth: 2
+    }],
+
+    tooltip: {
+       split: true
+    },
+        plotOptions: {
+
+        series: {
+            dataGrouping: {
+                units: [[
+                    'week',
+                    [1]
+                ], [
+                    'month',
+                    [1, 2, 3, 4, 6]
+                ]]
+            }
+        }
+    },
+    series: [{
+        type: 'candlestick',
+        name: ticker,
+        id: 'tckr_name',
+        zIndex: 2,
+        data: ohlc
+    }, {
+        type: 'column',
+        name: 'Volume',
+        id: 'volume',
+        data: volume,
+        yAxis: 1
+    },
+    {
+        type: 'vbp',
+        linkedTo: 'tckr_name',
+        params: {
+            volumeSeriesID: 'volume'
+        },
+        dataLabels: {
+            enabled: false
+        },
+        zoneLines: {
+            enabled: false
+        }
+    },
+    {
+        type: 'sma',
+        linkedTo: 'tckr_name',
+        zIndex: 1,
+        marker: {
+            enabled: false
+        }
+
+    }]
+});
+
+}
+
+    function getCharts(ticker){
+        var url = "https://stocksearch.azurewebsites.net/details/data/"+ ticker;
+        const XHR = new XMLHttpRequest();
+                XHR.open('GET', url, true);
+                XHR.onreadystatechange = function () {
+                    if (XHR.readyState == 4 && XHR.status == 200) {
+                        var json = JSON.parse(XHR.responseText);
+                        document.getElementById("container").innerHTML = json[0];
+                            populate_charts(json,ticker);
+
+                    }
+                };
+
+                XHR.send(null);
+    }
+
+
+    window.addEventListener("load", function() {
+      var params = getParameters(window.location.search.substring(1));
+       if(params.hasOwnProperty('ticker')) {
+           ticker = params['ticker'];
+           getCharts(ticker);
+       }
+     }
+   );
+
+
+</script>
+</html>

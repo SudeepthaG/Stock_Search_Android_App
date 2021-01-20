@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Stocks</string>
+    <string name="change_is_trending_down">Change is trending down</string>
+</resources>
